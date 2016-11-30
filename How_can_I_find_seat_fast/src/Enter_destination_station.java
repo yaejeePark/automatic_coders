@@ -9,10 +9,10 @@ import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Enter_destination_station_ss /*extends 그 전 확인해주는 class입력할 것!*/ {
+public class Enter_destination_station {
 
 	private JPanel contentPane;
-	JFrame Enter_destination_station_ss;
+	JFrame Enter_destination_station;
 
 	/**
 	 * Launch the application.
@@ -22,30 +22,33 @@ public class Enter_destination_station_ss /*extends 그 전 확인해주는 class입력할
 			public void run() {
 				try {
 					Intro_enter_current_place2 frame = new Intro_enter_current_place2();
-					frame.Enter_destination_station_ss.setVisible(true);
-				} catch (Exception e) {
+					frame.setVisible(true);
+
+					//저거 입력안해서 오류나는건가? frame.Enter_destination_station_ss.setVisible(true);
+				} catch (Exception e) 
 					e.printStackTrace();
 				}
 			}
 		});
 	}
 
+//
 	/**
 	 * Create the frame.
 	 */
-	public Enter_destination_station_ss() {
+	public Enter_destination_station() {
 		
-		Enter_destination_station_ss = new JFrame();//
-		Enter_destination_station_ss.getContentPane().setLayout(null);
-		Enter_destination_station_ss.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Enter_destination_station_ss.setBounds(100, 100, 812, 505);
+		Enter_destination_station = new JFrame();//
+		Enter_destination_station.getContentPane().setLayout(null);
+		Enter_destination_station.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Enter_destination_station.setBounds(100, 100, 812, 505);
 		
-		Enter_destination_station_ss.setSize(812,505);
+		Enter_destination_station.setSize(812,505);
 		contentPane = new JPanel();
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//
-		setBounds(100, 100, 812, 505);//
+		Enter_destination_station.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//
+		Enter_destination_station.setBounds(100, 100, 812, 505);//
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);//이거 3개 저 extend 때문에 오류나는 듯!
+		Enter_destination_station.setContentPane(contentPane);//이거 3개 저 extend 때문에 오류나는 듯!
 		
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -54,11 +57,11 @@ public class Enter_destination_station_ss /*extends 그 전 확인해주는 class입력할
 		});
 		contentPane.setLayout(null);
 		btnNewButton.setBounds(0, 0, 789, 450);
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\user1\\Desktop\\enter_destination_ss.PNG"));
+		btnNewButton.setIcon(new ImageIcon("checkDestination.PNG"));
 		//contentPane.add(btnNewButton);
-		Enter_destination_station_ss.getContentPane().add(btnNewButton);
+		Enter_destination_station.getContentPane().add(btnNewButton);
 		
-		this.Enter_destination_station_ss.setVisible(true);
+		this.Enter_destination_station.setVisible(true);
 	}
 }
 
