@@ -1,0 +1,97 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.AbstractAction;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+public class Show_seat extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Show_seat frame = new Show_seat();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	 public Show_seat() {
+	      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	      setBounds(100, 100, 789, 450);
+	      getContentPane().setLayout(null);
+	      
+	      JLabel lblStation = new JLabel("station");
+	      lblStation.setBounds(92, 105, 118, 57);
+	      getContentPane().add(lblStation);
+	      
+	      JLabel lblStation_1 = new JLabel("station");
+	      lblStation_1.setBounds(239, 105, 141, 57);
+	      getContentPane().add(lblStation_1);
+	      
+	      JLabel lblNewLabel_1 = new JLabel("station");
+	      lblNewLabel_1.setBounds(409, 105, 141, 57);
+	      getContentPane().add(lblNewLabel_1);
+	      
+	      JLabel lblStation_2 = new JLabel("station");
+	      lblStation_2.setBounds(574, 105, 118, 57);
+	      getContentPane().add(lblStation_2);
+	      
+	      JLabel lblNewLabel_2 = new JLabel("New label");
+	      lblNewLabel_2.setBounds(574, 328, 118, 57);
+	      getContentPane().add(lblNewLabel_2);
+	      
+	      JLabel lblStatino = new JLabel("statino");
+	      lblStatino.setBounds(402, 328, 148, 57);
+	      getContentPane().add(lblStatino);
+	      
+	      JLabel lblStation_3 = new JLabel("station");
+	      lblStation_3.setBounds(239, 328, 141, 62);
+	      getContentPane().add(lblStation_3);
+	      
+	      JLabel lblStation_4 = new JLabel("station");
+	      lblStation_4.setBounds(92, 331, 124, 57);
+	      getContentPane().add(lblStation_4);
+	      
+	      JLabel lblNewLabel = new JLabel("");
+	      lblNewLabel.setBounds(0, 0, 789,450);
+	      lblNewLabel.setIcon(new ImageIcon("seat.png"));
+	      getContentPane().add(lblNewLabel);
+	      System.out.println("hi");
+	   }
+		private class SwingAction extends AbstractAction {
+			public SwingAction() {
+				putValue(NAME, "SwingAction");
+				putValue(SHORT_DESCRIPTION, "Some short description");
+			}
+			public void actionPerformed(ActionEvent e) {
+			}
+		}
+		private class SwingAction_1 extends AbstractAction {
+			public SwingAction_1() {
+				putValue(NAME, "SwingAction_1");
+				putValue(SHORT_DESCRIPTION, "Some short description");
+			}
+			public void actionPerformed(ActionEvent e) {
+			}
+		}
+	}
