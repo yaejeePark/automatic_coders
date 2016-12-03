@@ -44,18 +44,21 @@ class Echo_protocol implements Runnable{
  			 
             ArrayList<Integer> current_all_seat = new ArrayList<Integer>();
             
-            int seat = in.read();
-            int destination = in.read();
-            int current = in.read();
-            System.out.println("seat"+seat);
-            System.out.println("dest"+destination);
-            System.out.println("curr"+current);
+            int seat = Integer.parseInt(in.readLine()) ;
+            System.out.println("seat "+seat);
+
+            int destination = Integer.parseInt(in.readLine());
+            int current = Integer.parseInt(in.readLine()) ;
+            System.out.println("seat "+seat);
+            System.out.println("dest "+destination);
+            System.out.println("curr "+current);
             Find_all_information find_all = new Find_all_information();
             current_all_seat = find_all.get_current_seat(1);
             //8개 전부 보내줘!
 			
 
 			
+            out.println(current_all_seat.get(0));
             out.println(current_all_seat.get(1));
             out.println(current_all_seat.get(2));
             out.println(current_all_seat.get(3));

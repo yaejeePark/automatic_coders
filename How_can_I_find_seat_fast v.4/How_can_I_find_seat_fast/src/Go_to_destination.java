@@ -12,7 +12,7 @@ import java.awt.BorderLayout;
 import javax.swing.*;
 import java.awt.Toolkit;
 import java.awt.Color;
-
+import java.awt.Robot;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -43,7 +43,7 @@ import javax.swing.SwingConstants;
 import javax.swing.BoxLayout;
 //원래 이름 _ ㅋㅋㅋㅋㅋ
 public class Go_to_destination extends JFrame{
-	public int go_to_destination(int dest){
+	public int go_to_destination(int dest) throws Exception{
       int i = 1;
       int stop = -1;
       int next_station = 0;
@@ -71,20 +71,34 @@ public class Go_to_destination extends JFrame{
             location station = new location(); 
             next_station = station.find_current_station(1);//다음은!?
             //이거 보여줘 
-            btnNewButton.setIcon(new ImageIcon("station"+(next_station++)+".PNG"));
-            i++;
+            btnNewButton.setIcon(new ImageIcon("station"+(next_station)+".PNG"));
+            next_station=next_station+1;
+            DealyMethod(10);
+            	i++;
          }
          else{//1보다 더 크면
-               btnNewButton.setIcon(new ImageIcon("station"+(next_station++)+".PNG"));
+               btnNewButton.setIcon(new ImageIcon("station"+(next_station)+".PNG"));
+               next_station=next_station+1;
+               DealyMethod(10);
+
                i++;
          }
       }
       else//가는 중이라면
       {
-    	  subwaydoor door = new subwaydoor();
+    	  subway subway = new subway();
+    	  
       }
    
    }
    return -1;
    }
+	
+	public void DealyMethod(int delayTime) throws Exception{
+		int mdelayTime;
+		mdelayTime = delayTime * 1000;
+		Robot robot = new Robot();
+		robot.delay(mdelayTime);
+	}
+	
 }

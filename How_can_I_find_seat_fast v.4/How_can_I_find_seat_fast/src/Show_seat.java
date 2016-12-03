@@ -17,7 +17,7 @@ import javax.swing.border.EmptyBorder;
 public class Show_seat extends JFrame {
 	public Show_seat() {
 	}
-
+static int finish;
    private JPanel contentPane;
 
    /**
@@ -94,11 +94,18 @@ public class Show_seat extends JFrame {
          lblStation_4.setBounds(92, 331, 124, 57);
          getContentPane().add(lblStation_4);
          
-         JLabel lblNewLabel = new JLabel("");
-         lblNewLabel.setBounds(0, 0, 789,450);
-         lblNewLabel.setIcon(new ImageIcon("seat.png"));
-         getContentPane().add(lblNewLabel);
-         System.out.println("hi");
+         JButton JButton_back = new JButton("");
+         JButton_back.setLayout(null);
+         JButton_back.setBounds(0, 0, 789,450);
+         JButton_back.setIcon(new ImageIcon("seat.png"));
+         getContentPane().add(JButton_back);
+         JButton_back.addActionListener(new ActionListener() {
+	          public void actionPerformed(ActionEvent e) {
+	             //여기에 넣어 예지얌
+	             setVisible(false);
+	           re(1);
+	          }
+	       });
          
          setVisible(true);
       }
@@ -118,4 +125,13 @@ public class Show_seat extends JFrame {
          public void actionPerformed(ActionEvent e) {
          }
       }
+      public void re(int hi)
+      {
+         finish=hi;
+      }
+      public int getDesination(){
+            System.out.println(finish+"끝났나?");
+
+          return finish;
+       }
    }

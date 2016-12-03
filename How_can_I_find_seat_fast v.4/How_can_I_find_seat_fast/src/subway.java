@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -8,7 +9,7 @@ import javax.swing.*;
 public class subway extends JFrame{
    JLabel pic;
    Timer tm;
-   JFrame jFrame;
+  // JFrame jFrame;
    int x=0;
    String[] list= {
          "subway1.png",
@@ -21,10 +22,7 @@ public class subway extends JFrame{
          "subway8.png",
          "subway9.png",
          "subway10.png"
-      
-         
-         
-         
+        
    };
    public subway(){
 	  super("Java slideshow");
@@ -32,7 +30,7 @@ public class subway extends JFrame{
       pic.setBounds(0, 0, 789, 450);
       
       SetImageSize(9);
-      
+     
       tm= new Timer(1,new ActionListener(){
          
          @Override
@@ -41,18 +39,25 @@ public class subway extends JFrame{
             x+=1;
             if(x>= list.length)
                x=0;
-            
+          
          }
       });
-      jFrame.add(pic);
+      add(pic);
+      try {
+			DealyMethod(1);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
       tm.start();
-      jFrame.setLayout(null);
-      jFrame.setSize(805,505);//		Jframe.setBounds(100, 100, 805, 505);
+     
+     setLayout(null);
+      setSize(805,505);//Jframe.setBounds(100, 100, 805, 505);
 
-      jFrame.getContentPane().setBackground(Color.decode("#bdb67b"));
-      jFrame.setLocationRelativeTo(null);
-      jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      jFrame.setVisible(true);
+      getContentPane().setBackground(Color.decode("#bdb67b"));
+      setLocationRelativeTo(null);
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      setVisible(true);
    }   
   
    public void SetImageSize(int i){
@@ -67,6 +72,12 @@ public class subway extends JFrame{
 	  new subway();
       
    }
+  public void DealyMethod(int delayTime) throws Exception{
+		int mdelayTime;
+		mdelayTime = delayTime * 1000;
+		Robot robot = new Robot();
+		robot.delay(mdelayTime);
+	}
 }
 
 

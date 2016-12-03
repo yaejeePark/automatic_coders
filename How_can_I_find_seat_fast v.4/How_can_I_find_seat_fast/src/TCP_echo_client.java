@@ -22,7 +22,7 @@ public class TCP_echo_client {
          BufferedReader inFromUser ;
          PrintWriter outToServer;
          inFromUser = new BufferedReader(new InputStreamReader(
-        		 c_socket.getInputStream()));
+               c_socket.getInputStream()));
          outToServer = new PrintWriter(c_socket.getOutputStream(), true);
          //System.out.println(inFromUser.readLine());
          outToServer.println("안녕 난 박예지얌");//서버에게 보냄!
@@ -36,14 +36,29 @@ public class TCP_echo_client {
          System.out.println(client_infromation.getCurrentStation());//person에 잘 들어갔는지 확인
          //목적지 클릭하는 창이 떠요!! 
          //2. 목적지를 person에 넣어
-         Enter_destination_station enter_dest = new Enter_destination_station();// 목적지 찍을 수 있
-        int dest = enter_dest.enter_destination_station(2);
+         ConvertToString convert = new ConvertToString();
+         String current = convert.toString(client_infromation.getCurrentStation());
+         Enter_destination_station enter_dest = new Enter_destination_station(current);// 목적지 찍을 수 있
+         //enter_dest.setVisible(true);
+        // enter_dest.setVisible(true);
+         int dest = 0;
+        //client_infromation.setDestinationStation(dest);//클라이언트가 어디 dest로 갈 것인지 정보를 받아
+       
+        while(true)
+        {
+        	dest = enter_dest.getDesination();
+           if(dest!=0){
+        	  System.out.println("오예~~~~~~~"+dest);
+              break;
+              }
+        }
         client_infromation.setDestinationStation(dest);//클라이언트가 어디 dest로 갈 것인지 정보를 받아
-         System.out.println(dest);
+         System.out.println("내가 받은 dest는 : "+dest);
          //3.어레이 리스트 받아
          //자리 GUI도 띄워줘
          //서버한테 연락햇!!
          give_all_seat(outToServer,inFromUser);
+         
          
          //4. while문 돌기 시작!
          
@@ -67,34 +82,52 @@ public class TCP_echo_client {
          c_socket.close();
       }catch(IOException e){
          e.printStackTrace();
-      }
+      } catch (Exception e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 
    }
 
 //이걸 넣어야 해 
    public synchronized static void give_all_seat(PrintWriter outToServer,BufferedReader inFromUser) throws IOException{
    
-	  int i=0;
-	  int seat = 0;
-      outToServer.println(client_infromation.getPersonSeat());//서버에게 보냄!
+     int i=0;
+     int seat = 0;
+     System.out.println("여기는 give_all_seat! 입니닷");
+    System.out.println(client_infromation.getPersonSeat());//서버에게 보냄!
+    System.out.println(client_infromation.getDeststation());//서버에게 보냄!
+    System.out.println(client_infromation.getCurrentStation());//서버에게 보냄!
+    System.out.println("seat "+client_infromation.getPersonSeat());
+
+     outToServer.println(client_infromation.getPersonSeat());//서버에게 보냄!
       outToServer.println(client_infromation.getDeststation());//서버에게 보냄!
       outToServer.println(client_infromation.getCurrentStation());//서버에게 보냄!
    
       ArrayList<Integer> current_all_seat = new ArrayList<Integer>();
-      for(i=1;i<=8;i++){
-    	  seat = inFromUser.read();
-    	  current_all_seat.add(i, seat);
+      for(i=0;i<=8;i++){
+         seat = inFromUser.read();
+         current_all_seat.add(i,seat);
       }
       Show_seat all_seat = new Show_seat();
       all_seat.show_seat(current_all_seat);
+int finish = 0;
+      while(true)
+      {
+      	finish = all_seat.getDesination();
+         if(finish==1){
+      	  System.out.println("오예~~~~~~~"+finish);
+            break;
+            }
+      }
    }
    
    public synchronized static void get_out_of_seat(PrintWriter outToServer){
-	   
-	      outToServer.println(client_infromation.getPersonSeat());//서버에게 보냄!
-	     
-	   //나를 없애줘!!! 라고 보내 ~~~~~~~~~~~<아직 안함!>
-	   }
+      
+         outToServer.println(client_infromation.getPersonSeat());//서버에게 보냄!
+        
+      //나를 없애줘!!! 라고 보내 ~~~~~~~~~~~<아직 안함!>
+      }
 }
 
 //안봐도 돼
