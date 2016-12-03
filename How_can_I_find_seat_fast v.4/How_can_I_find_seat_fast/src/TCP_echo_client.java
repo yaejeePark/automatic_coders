@@ -1,6 +1,10 @@
 import java.net.*;
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+import java.text.SimpleDateFormat;
+import java.net.Socket;
+import java.net.ServerSocket;
+
 import java.io.*;
 import java.util.*;
 public class TCP_echo_client {
@@ -15,20 +19,27 @@ public class TCP_echo_client {
          Scanner scan = new Scanner(System.in);
          /* Create output stream attached to socket */
          /* Create input stream attached to socket */
-         BufferedReader inFromUser = new BufferedReader(new InputStreamReader(c_socket.getInputStream()));
-         PrintWriter outToServer = new PrintWriter(c_socket.getOutputStream());
-         System.out.println(inFromUser.readLine());
-         
+         BufferedReader inFromUser ;
+         PrintWriter outToServer;
+         inFromUser = new BufferedReader(new InputStreamReader(
+        		 c_socket.getInputStream()));
+         outToServer = new PrintWriter(c_socket.getOutputStream(), true);
+         //System.out.println(inFromUser.readLine());
+         outToServer.println("안녕 난 박예지얌");//서버에게 보냄!
+         System.out.println("안녕 난 박예지얌");
          //1.내가 현재 어디 역에 있는지 
          //person에 current를 넣어
          location current_location = new location();
          int hi = current_location.find_current_station(1);
+         System.out.println(hi);//현재 나의 역
          client_infromation.setCurrentStation(hi);//현재 나의 current를 가져와
+         System.out.println(client_infromation.getCurrentStation());//person에 잘 들어갔는지 확인
          //목적지 클릭하는 창이 떠요!! 
          //2. 목적지를 person에 넣어
          Enter_destination_station enter_dest = new Enter_destination_station();// 목적지 찍을 수 있
-         client_infromation.setDestinationStation(enter_dest.Enter_destination_station_GUI());//클라이언트가 어디 dest로 갈 것인지 정보를 받아
-         
+        int dest = enter_dest.enter_destination_station(2);
+        client_infromation.setDestinationStation(dest);//클라이언트가 어디 dest로 갈 것인지 정보를 받아
+         System.out.println(dest);
          //3.어레이 리스트 받아
          //자리 GUI도 띄워줘
          //서버한테 연락햇!!

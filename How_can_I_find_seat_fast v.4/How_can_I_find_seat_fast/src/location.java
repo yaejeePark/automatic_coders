@@ -1,7 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class location {
+public class location  {
 	
 public int find_current_station(int hi) {
 	// TODO Auto-generated method stub

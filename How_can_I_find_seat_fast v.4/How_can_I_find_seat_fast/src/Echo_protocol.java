@@ -11,39 +11,51 @@ class Echo_protocol implements Runnable{
    private Socket clntSock; //Connection socket
    private Logger logger; //Logging facility
    private PrintWriter out;
+   private BufferedReader in;
+  
    public Echo_protocol(Socket clntSock, Logger logger){
       this.clntSock = clntSock;
       this.logger = logger;
    }
-   
+  
    public void run(){//run!!!! 
-      
+	   try {
+		in = new BufferedReader(new InputStreamReader(
+				   clntSock.getInputStream()));
+		 out = new PrintWriter(clntSock.getOutputStream(), true);
+	} catch (IOException e1) {
+		// TODO Auto-generated catch block
+		e1.printStackTrace();
+	}
+	
       ArrayList entry = new ArrayList();
       entry.add("Client address and port = "+clntSock.getInetAddress().getHostAddress()+":"+clntSock.getPort());
       entry.add("Thread = "+Thread.currentThread().getName());
       Get_current_time_exam currentTime = new Get_current_time_exam();//Time 받는 부분
       String currentTimeStr = currentTime.GetCurrentTimeExam();
       entry.add("current time is "+currentTimeStr);//여기까지는 잘 돼 !!! 
-     // try{
-         System.out.println("여기 오니?");
+ 
+         System.out.println("hi 여기 오니?");
          //Get the input and output I/O streams from socket
          try {
-            InputStream in = clntSock.getInputStream();         
-            //OutputStream out = clntSock.getOutputStream();
-
-            out = new PrintWriter(clntSock.getOutputStream(),true);
-
+ 			System.out.println("Hello!호호");
+ 			 String str= in.readLine();
+ 			 System.out.println("소개"+str);
+ 			 
             ArrayList<Integer> current_all_seat = new ArrayList<Integer>();
             
             int seat = in.read();
             int destination = in.read();
             int current = in.read();
-            
+            System.out.println("seat"+seat);
+            System.out.println("dest"+destination);
+            System.out.println("curr"+current);
             Find_all_information find_all = new Find_all_information();
             current_all_seat = find_all.get_current_seat(1);
             //8개 전부 보내줘!
-			out.println("Hello!");
+			
 
+			
             out.println(current_all_seat.get(1));
             out.println(current_all_seat.get(2));
             out.println(current_all_seat.get(3));

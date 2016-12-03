@@ -39,33 +39,26 @@ import java.util.Iterator;
 import java.util.HashMap;
 import java.lang.String;
 import java.net.*;
+import java.net.*;
+import java.io.*;
+import java.util.*;
+import java.text.SimpleDateFormat;
+import java.net.Socket;
+import java.net.ServerSocket;
 public class TCP_echo_server_thread {
 	public static void main(String[] args) throws IOException{
 		ServerSocket servSock = new ServerSocket(6789);
 		//    ServerSocket servSock = new ServerSocket(6789);
 
-        BufferedReader in;
-        PrintWriter out;
-		Socket ClntSock = servSock.accept(); //Block waiting for connection
-		 
-         
-         in = new BufferedReader(new InputStreamReader(
-        		 ClntSock.getInputStream()));
-         out = new PrintWriter(ClntSock.getOutputStream(), true);
-         //
-
-		
+		System.out.println("Ready to server");
+	
 		Logger logger = new ConsoleLogger(); //Log messages to console
 		//Intro_loading intro_loading = new Intro_loading();
-		System.out.println("Ready to server");
-
-
-		out = new PrintWriter(ClntSock.getOutputStream(),true);
-
 		//Run forever, accepting and spawning threads to service each connection 
 		for(;;){//들어오는 요구를 반복적으로 처리함/ 포트에 의해 만들어지는 accept를 호출!
+				Socket ClntSock = servSock.accept(); 
+				System.out.println("Hello!");
 			
-				out.println("Hello!");
 				Echo_protocol protocol = new Echo_protocol(ClntSock, logger);
 				Thread thread = new Thread(protocol);
 				thread.start();
