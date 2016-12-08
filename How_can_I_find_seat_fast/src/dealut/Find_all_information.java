@@ -237,26 +237,27 @@ public class Find_all_information {
 	   System.out.println("여기는 ㅜㅜㅜㅜㅜㅜㅜㅜㅜ? ㅠㅠㅠㅠㅠ가장 빠른 자리 찾아줘 제발 current는 뭐니? "+current);
       int find = 0;
       int find_index = 0;  
-    		  if(showSeat.get(0)==0)
+    		 
+    		  if(showSeat.isEmpty())		    
     			  return 1;
-    		  else if(showSeat.get(1)==0)
+    		  else if(showSeat.isEmpty())
     			  return 2;
-    		  else if(showSeat.get(2)==0)
+    		  else if(showSeat.isEmpty())
     			  return 3;
-    		  else if(showSeat.get(3)==0)
+    		  else if(showSeat.isEmpty())
     			  return 4;
-    		  else if(showSeat.get(4)==0)
+    		  else if(showSeat.isEmpty())
     			  return 5;
-    		  else if(showSeat.get(5)==0)
+    		  else if(showSeat.isEmpty())
     			  return 6;
-    		  else if(showSeat.get(6)==0)
+    		  else if(showSeat.isEmpty())
     			  return 7;
-    		  else if(showSeat.get(7)==0)
+    		  else if(showSeat.isEmpty())
     			  return 8;
     		  
    
     		  
-    		  find = current+1;//0부터 8의 값이 나오겠지??? 지하철 역은 총 9개 임  현재 자리는 8자리가 있음
+    		  find = current;//0부터 8의 값이 나오겠지??? 지하철 역은 총 9개 임  현재 자리는 8자리가 있음
  	         System.out.println("current"+current);
  	         int k= 0;
 	

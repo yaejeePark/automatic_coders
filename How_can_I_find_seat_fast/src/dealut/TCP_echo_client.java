@@ -17,10 +17,8 @@ public class TCP_echo_client {
       try{
          //Person client_infromation = new Person();
          /* Create client socket, connect to server */
-       //  Socket c_socket = new Socket("172.16.17.203",6789);
+        // Socket c_socket = new Socket("172.16.19.218",6789);
     	      Socket c_socket = new Socket("127.0.0.1",6789);
-    	  
-        //Socket c_socket = new Socket("121.190.2.21",6789);
 
          Scanner scan = new Scanner(System.in);
          /* Create output stream attached to socket */
